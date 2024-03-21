@@ -11,14 +11,13 @@ list_of_all_titles = movies_df['title'].tolist()
 similarity = cosine_similarity(feature_extraction)
 
 def movie_suggestion(user_input):
-    # Vectorize the email text
         input_movie = str(user_input)
         find_close_match = difflib.get_close_matches(input_movie, list_of_all_titles)
-        print(find_close_match)
+        print(f'Close match results: {find_close_match}')
         close_match = find_close_match[0]
-        print(close_match)
+        print(f'Closest match: {close_match}')
         index_of_the_movie = movies_df[movies_df['title'] == close_match]['index'].values[0]
-        print(index_of_the_movie)
+        print(f'Index of the movie: {index_of_the_movie}')
         similarity_score = list(enumerate(similarity[index_of_the_movie]))
         sorted_similar_movies = sorted(similarity_score, key = lambda x:x[1], reverse = True)
         print('Movies suggested for you : \n')
@@ -35,17 +34,12 @@ def movie_suggestion(user_input):
                 i+=1
         return movie_list
 def main():
-    """
-    Main function for the Streamlit app.
-    """
-
     st.title("Movie Suggestion")
     movie_text = st.text_area("Enter movie name:", height=50)
 
-    if st.button("Classify"):
+    if st.button("Search"):
         suggestion = movie_suggestion(movie_text)
-    
-    st.write(suggestion)
+        st.write(suggestion)
 
 if __name__ == '__main__':
     main()
