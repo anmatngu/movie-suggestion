@@ -13,7 +13,7 @@ similarity = cosine_similarity(feature_extraction)
 def movie_suggestion(user_input):
         input_movie = str(user_input)
         find_close_match = difflib.get_close_matches(input_movie, list_of_all_titles)
-        print(f'Close match results: {find_close_match}')
+        print(f'DiffLib results: {find_close_match}')
 
         if find_close_match:
             close_match = find_close_match[0]
