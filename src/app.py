@@ -54,7 +54,7 @@ def main():
 
     st.title("Movie Suggestion")
 
-    user_input = st.text_input("Enter a movie name or keyword:")
+    user_input = st.text_input("Enter a movie name:")
 
     if user_input:
         suggestion = movie_suggestion(user_input)
